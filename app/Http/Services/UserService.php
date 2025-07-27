@@ -12,9 +12,12 @@ use Exception;
 
 class UserService
 {
-    public function getall()
+    public function getall($offset, $limit)
     {
-        $users = User::all();
+        $users = User::offset($offset)->limit($limit)->get();
+        if ($users->isEmpty()) {
+            return response()->json(['message' => 'No users found'], 404);
+        }
         return response()->json($users->map(function ($user) {
             return [
                 'id' => $user->id,

@@ -19,9 +19,9 @@ Route::get('/users', [ UserController::class, 'getall']);
 Route::post('login', [ UserController::class, 'login']);
 Route::post('/reset-password', [ UserController::class, 'resetPassword']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
 
 //Route::middleware('auth:sanctum')->get('/users', [ UserController::class, 'getall']);
 Route::middleware('auth:sanctum')->post('/UpdateUser', [ UserController::class, 'update']);
